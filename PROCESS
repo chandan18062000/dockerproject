@@ -27,14 +27,28 @@ docker swarm init --advertise-addr 172.31.85.110
 docker node ls
 
 
-2. INSTALLING JENKINS (MASTER)
-
+2. INSTALLING JENKINS (MASTER NODE) rpm distro
+ 
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 amazon-linux-extras install java-openjdk11 -y 
 yum install git maven jenkins -y
 systemctl start jenkins.service
 systemctl status jenkins.service
+
+
+
+for Ubuntu distro:
+
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian/jenkins.io-2023.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+apt-get install -y openjdk-17-jdk
+
 
 
 3. CREATE CUSTOM IMAGES AND PUSH TO DOCKERHUB WITH TAGS
