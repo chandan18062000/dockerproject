@@ -1,26 +1,22 @@
-version: '3.8'
 services:
-  movies:
-    image: hpakala53/paytmmovies:latest
+  ticket:
+    image: chandan18062000/ticket
     ports:
       - "81:80"
     deploy:
       replicas: 3
-  train:
-    image: hpakala53/paytmtrain:latest
+
+  mobile:
+    image: chandan18062000/mobile
     ports:
       - "82:80"
     deploy:
       replicas: 3
+
+
   dth:
-    image: hpakala53/paytmdth:latest
+    image: chandan18062000/dth
     ports:
       - "83:80"
-    deploy:
-      replicas: 3
-  recharge:
-    image: hpakala53/paytmrecharge:latest
-    ports:
-      - "84:80"
     deploy:
       replicas: 3
